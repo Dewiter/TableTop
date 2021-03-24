@@ -1,0 +1,29 @@
+{
+  "name": "tabletop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dewiter/TableTop.git"
+  },
+  "author": "dewiter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dewiter/TableTop/issues"
+  },
+  "homepage": "https://github.com/Dewiter/TableTop#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
+    "express-server": "^0.7.0",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.1",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}
