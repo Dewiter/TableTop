@@ -2,9 +2,30 @@
     display: flex;
     justify-content: center;
     margin-top: 5%;
+    
 }
 
 .card {
     text-align: center;
     padding: 10px;
+    background-color: #516079;
+}
+body {
+    background-color: #2E3244;
+}
+
+nav {
+    background-color: #516079;
+}
+.linkPage {
+    color: #F1895C !important;
+}
+
+.card-title {
+    color: #F1895C;
+}
+
+.grid {
+    border:1px solid #000000;
+    background-color: #FFFFFF;
 }
