@@ -8,21 +8,19 @@
 .card {
     text-align: center;
     padding: 10px;
-    background-color: #516079;
+    background-color: #00A0B0;
 }
 body {
-    background-color: #2E3244;
+    background-color: #F0EEE9;
 }
 
 nav {
-    background-color: #516079;
-}
-.linkPage {
-    color: #F1895C !important;
+    background-color: #00A0B0;
 }
 
+
 .card-title {
-    color: #F1895C;
+    color: #CF5C78;
 }
 
 .grid {

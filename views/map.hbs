@@ -1,15 +1,13 @@
 <div class="row game">
     <div class="col s12 container">
       <div class="card">
-            <canvas class="grid"></canvas> 
+            <script src="/js/map.js"></script>
         </div>
     </div>
 </div>
 
-<script src="/js/grid.js"></script>
-
 <script>
-    const canvas = document.querySelector('.grid');
-    canvas.width = 500;
-    canvas.height = 500;
+    setTimeout(() => {
+        document.querySelector('.card').appendChild(document.querySelector('.p5Canvas'));
+    }, 50);
 </script>
