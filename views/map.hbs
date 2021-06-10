@@ -1,12 +1,13 @@
 <div class="row game">
     <div class="col s12 container">
-      <div class="card">
-            <script src="/js/map.js"></script>
+      <div class="card" style="height: 100%;">
         </div>
     </div>
 </div>
 
+<script src="/js/gameHandler.js"></script>
 <script>
+    const game = new Game(2);
     setTimeout(() => {
         document.querySelector('.card').appendChild(document.querySelector('.p5Canvas'));
     }, 50);
