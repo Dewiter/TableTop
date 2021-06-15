@@ -8,12 +8,12 @@
     import Game  from '/js/gameHandler.js'
 
     let game;
-    async function getConfig(){
-        const res = await fetch('../js/config.json');
-        const data = await res.json();
-        game = await new Game(data);
+    async function initGame(){
+        const res   = await fetch('../js/config.json');
+        const data  = await res.json();
+        game        = new Game(data);
     }
-    getConfig();
+    initGame();
 
     setTimeout(() => {
         document.querySelector('.card').appendChild(document.querySelector('.p5Canvas'));

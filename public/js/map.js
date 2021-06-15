@@ -3,10 +3,10 @@
 class Map {
   // init class
   constructor (config) {
-    const grid    = this.createGrid(config.size, config.block);
+    this.config   = config;
+    const grid    = this.createGrid();
     const sketch  = this.drawCanvas(grid);
     new p5(sketch, 'container');
-
   }
 
   //@desc     Creates none walkable tile
@@ -16,29 +16,40 @@ class Map {
   }
 
   // @desc    Creates a grid array
-  // @size    array that defines size of the map
+  // @dimension    array that defines dimension of the map
   // @block   defines the number of tiles not walkable
-  createGrid(size, block) {
+  createGrid() {
     const grid = []
-    for (let x = 0; x < size[0]; x++) {
+    for (let x = 0; x < this.config.dimension.x; x++) {
       grid[x] = [];
-      for (let y = 0; y < size[1]; y++) {
+      for (let y = 0; y < this.config.dimension.y; y++) {
         grid[x][y] = "E";
       }
     }
-    console.log(grid);
     return grid;
   }
 
+  createTile(p, x, y) {
+    p.rect(x, y, this.config.tileSize, this.config.tileSize)
+
+  }
 
   // @desc    Draws and creates a p5 canvas
   // @grid    Array that defines the map
   drawCanvas(grid) {
+    const self = this;
     const sketch = function (p) {
       p.setup = () => {
         p.createCanvas(400, 400);
         p.background(255);
-      } 
+      }
+      p.draw = () => {
+        for (let y = 0; y < self.config.mapSize.y; y+= self.config.tileSize) {
+          for (let x = 0; x < self.config.mapSize.x; x+= self.config.tileSize) {
+            self.createTile(p, x, y)
+          } 
+        }
+      }
     }
     return sketch
   }

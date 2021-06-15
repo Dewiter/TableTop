@@ -1,6 +1,14 @@
 {
     "map": {
-        "size": [5, 3],
-        "block": 1
+        "dimension": {
+            "x" : 5,
+            "y" : 3
+        },
+        "block": 1,
+        "tileSize": 50,
+        "mapSize": {
+            "x": 400,
+            "y": 400
+        }
     } 
 }
