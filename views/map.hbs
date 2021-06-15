@@ -4,10 +4,9 @@
         </div>
     </div>
 </div>
-
-<script src="/js/gameHandler.js"></script>
-<script>
-    const game = new Game(2);
+<script type="module">
+    import Game  from '/js/gameHandler.js'
+    const game = new Game([8, 5], 3);
     setTimeout(() => {
         document.querySelector('.card').appendChild(document.querySelector('.p5Canvas'));
     }, 50);
