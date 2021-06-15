@@ -9,29 +9,35 @@ class Map {
     new p5(sketch, 'container');
   }
 
-  //@desc     Creates none walkable tile
-  //@block    defines the number of tiles not walkable
-  createBlock(block) {
-
-  }
-
-  // @desc    Creates a grid array
-  // @dimension    array that defines dimension of the map
-  // @block   defines the number of tiles not walkable
+  // @desc          Creates a grid array
+  // @dimension     array that defines dimension of the map
+  // @block         defines the number of tiles not walkable
   createGrid() {
     const grid = []
+    let tmp = 0;
     for (let x = 0; x < this.config.dimension.x; x++) {
       grid[x] = [];
       for (let y = 0; y < this.config.dimension.y; y++) {
-        grid[x][y] = "E";
+        let r = Math.floor(Math.random() * this.config.random.block);
+        if (r / 100 == 0 && tmp < this.config.random.maxBlock) {
+          grid[x][y] ="F";
+          tmp++;
+        } else {
+          grid[x][y] ="E"
+        }
       }
     }
     return grid;
   }
 
-  createTile(p, x, y) {
-    p.rect(x, y, this.config.tileSize, this.config.tileSize)
-
+  createTile(p, x, y, state) {
+    if (state == "F") {
+      p.fill(51)
+    } else {
+      p.fill(255);
+    }
+    p.rect(x, y,  this.config.mapSize.x / this.config.dimension.x,
+                  this.config.mapSize.y / this.config.dimension.y)
   }
 
   // @desc    Draws and creates a p5 canvas
@@ -40,14 +46,18 @@ class Map {
     const self = this;
     const sketch = function (p) {
       p.setup = () => {
-        p.createCanvas(400, 400);
+        p.createCanvas(self.config.mapSize.x,self.config.mapSize.y);
         p.background(255);
       }
       p.draw = () => {
-        for (let y = 0; y < self.config.mapSize.y; y+= self.config.tileSize) {
-          for (let x = 0; x < self.config.mapSize.x; x+= self.config.tileSize) {
-            self.createTile(p, x, y)
-          } 
+        let xIndex = 0;
+        for (let x = 0; x < self.config.dimension.x; x++) {
+          let yIndex = 0;
+          for (let y = 0; y < self.config.dimension.x; y++) {
+            self.createTile(p, xIndex, yIndex, grid[x][y]);
+            yIndex += self.config.mapSize.y / self.config.dimension.y;
+          };
+          xIndex += self.config.mapSize.x / self.config.dimension.x; 
         }
       }
     }
