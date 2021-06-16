@@ -1,8 +1,13 @@
 .game {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     margin-top: 5%;
     height: 500px;
+}
+
+.p5Canvas {
+    margin-top: 3%;
+    margin-left: 3%;
 }
 
 .card {
@@ -26,4 +31,14 @@ nav {
 .grid {
     border:1px solid #000000;
     background-color: #FFFFFF;
+}
+
+#logo-nav {
+    margin-left: 10px;
+}
+
+
+
+.container {
+    display: flex;
 }
