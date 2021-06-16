@@ -1,9 +1,15 @@
 <div class="row game">
     <div class="col s12 container">
-      <div class="card" id="sketch" style="height: 100%;"></div>
-      <div id="gameLog">
-          <h1 class="currentPlayer">Player</h1>
-      </div>
+        <div class="card">
+            <div class="card-content">
+                <div  id="sketch" style="height: 100%;"></div>
+                <div id="gameLog">
+                    <h1 class="currentPlayer">Player</h1>
+                    
+                    <a class="waves-effect waves-light btn createMap" onclick="M.toast({html: 'Map creer !'})">Generation de map</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script type="module">
@@ -14,9 +20,14 @@
         const res   = await fetch('../js/config.json');
         const data  = await res.json();
         game        = new Game(data);
+        document.querySelector('.createMap').addEventListener('click', () => {
+            if (document.querySelector('.p5Canvas') != null) {
+                document.querySelector('.p5Canvas').remove();
+            }
+            game.getMap(data.map);
+        })
     }
-
-        initGame();
+    initGame();
 
 </script>
 
