@@ -1,12 +1,13 @@
 "use strict"
-
+import openSimplexNoise from './noise.js'
 class Map {
   // init class
   constructor (config) {
     this.config   = config;
+    this.noise    = openSimplexNoise(Date.now());
     const grid    = this.createGrid();
     const sketch  = this.drawCanvas(grid);
-    new p5(sketch, 'container');
+    new p5(sketch, 'sketch');
   }
 
   // @desc          Creates a grid array
@@ -18,10 +19,9 @@ class Map {
     for (let x = 0; x < this.config.dimension.x; x++) {
       grid[x] = [];
       for (let y = 0; y < this.config.dimension.y; y++) {
-        let r = Math.floor(Math.random() * this.config.random.block);
-        if (r / 100 == 0 && tmp < this.config.random.maxBlock) {
-          grid[x][y] ="F";
-          tmp++;
+        let r = (this.noise.noise2D(x, y) + 1) / 2;
+        if (r <= this.config.random.maxBlock / 100) {
+          grid[x][y] = r; 
         } else {
           grid[x][y] ="E"
         }
@@ -30,9 +30,15 @@ class Map {
     return grid;
   }
 
+  // @desc    draws a tile
+  // @p       p5 variable
+  // @x       position on the y axis
+  // @y       position on the y axis
+  // @state   sate of the current tile
   createTile(p, x, y, state) {
-    if (state == "F") {
-      p.fill(51)
+    if (state != "E") {
+      console.log('in')
+      p.fill(100)
     } else {
       p.fill(255);
     }
@@ -51,6 +57,8 @@ class Map {
       }
       p.draw = () => {
         let xIndex = 0;
+        p.clear();
+        p.background(255);
         for (let x = 0; x < self.config.dimension.x; x++) {
           let yIndex = 0;
           for (let y = 0; y < self.config.dimension.x; y++) {

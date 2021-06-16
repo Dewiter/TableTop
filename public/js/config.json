@@ -5,9 +5,7 @@
             "y" : 8
         },
         "random": {
-            "block": 2,
-            "maxBlock": 20
-
+            "maxBlock": 40
         },
         "mapSize": {
             "x": 400,
@@ -15,6 +13,8 @@
         }
     },
     "player" : {
-        "hp" : 3
+        "hp" : 3,
+        "pm" : 3,
+        "weapon" : "basic"
     }
 }

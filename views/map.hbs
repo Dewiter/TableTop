@@ -1,7 +1,6 @@
 <div class="row game">
     <div class="col s12 container">
-      <div class="card" style="height: 100%;">
-        </div>
+      <div class="card" id="sketch" style="height: 100%;"></div>
     </div>
 </div>
 <script type="module">
@@ -13,10 +12,8 @@
         const data  = await res.json();
         game        = new Game(data);
     }
-    initGame();
 
-    setTimeout(() => {
-        document.querySelector('.card').appendChild(document.querySelector('.p5Canvas'));
-    }, 50);
+        initGame();
+
 </script>
 
