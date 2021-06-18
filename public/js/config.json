@@ -13,8 +13,11 @@
         }
     },
     "player" : {
-        "hp" : 3,
-        "pm" : 3,
-        "weapon" : "basic"
+        "one" : {
+            "hp" : 3,
+            "pm" : 3,
+            "weapon" : "basic",
+            "currentPos": []
+        }
     }
 }

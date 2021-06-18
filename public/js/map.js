@@ -2,9 +2,10 @@
 import openSimplexNoise from './noise.js'
 class Map {
   // init class
-  constructor (config) {
+  constructor (config, player) {
     this.config   = config;
     this.noise    = openSimplexNoise(Date.now());
+    this.player   = player;
     const grid    = this.createGrid();
     const sketch  = this.drawCanvas(grid);
     new p5(sketch, 'sketch');

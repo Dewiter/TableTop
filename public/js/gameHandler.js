@@ -4,7 +4,7 @@ import Player from './player.js'
 
 class Game {
   constructor(config) {
-    const player  = new Player(config.player);
+    this.player  = new Player(config.player.one);
   }
 
   getMap(map) {

@@ -1,12 +1,17 @@
 <div class="row game">
     <div class="col s12 container">
-        <div class="card">
+        <div class="card game-card">
             <div class="card-content">
-                <div  id="sketch" style="height: 100%;"></div>
+                <div class="card-title">
+                    <h3 class="white-text">Creation de la map</h3>
+                    <span class="white-text">Dans cette page vous pourrez creer la carte dans <br> laquelle le jeux va prendre place. <br><br> Vous pourrez aussi faire apparaitre les deux joueur<br> ainsi  que les differentes armes <br> accessibles pour les deux joueurs</span>
+                </div>
+                <div  id="sketch" style="height: 400px; width: 400px"></div>
                 <div id="gameLog">
-                    <h1 class="currentPlayer">Player</h1>
-                    
-                    <a class="waves-effect waves-light btn createMap" onclick="M.toast({html: 'Map creer !'})">Generation de map</a>
+                    <div class="buttons">
+                        <a class="waves-effect waves-light btn CTA" onclick="M.toast({html: 'Map creer !', displayLength: 500})">Generation de map</a>
+                        <a class="waves-effect waves-light btn CTA" onclick="M.toast({html: 'Player spawned !', displayLength: 500})">Spawn player</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -20,7 +25,7 @@
         const res   = await fetch('../js/config.json');
         const data  = await res.json();
         game        = new Game(data);
-        document.querySelector('.createMap').addEventListener('click', () => {
+        document.querySelector('.CTA').addEventListener('click', () => {
             if (document.querySelector('.p5Canvas') != null) {
                 document.querySelector('.p5Canvas').remove();
             }
